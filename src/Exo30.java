@@ -8,7 +8,7 @@ public class Exo30 {
 //        que le tableau reste trié. Le but n'est évidemment pas d'insérer la valeur à la fin et de
 //        trier après mais bien de l'insérer au bon endroit directement.
 
-        Integer[] myTab = new Integer[]{1,2,3,4,5,6,7,8,9} ;
+        Integer[] myTab = new Integer[]{1,2,3,4,5,6,7,8,9,0} ;
 
         ArrayList<Integer> myList = new ArrayList<>(Arrays.asList(myTab)) ;
         int n = 4;
