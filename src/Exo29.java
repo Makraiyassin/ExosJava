@@ -12,20 +12,23 @@ public class Exo29 {
         int index = 0;
         while(true){
             if(tmp.equals("q")){
-                System.out.println("vous etes sur le"+myTab[index]+"et vous quittez.");
+                System.out.println("vous etes sur le "+myTab[index]+" et vous quittez.");
                 break;
             } else if (tmp.equals("d")) {
-                index = index == 9 ? 0 : index++;
-                System.out.println("vous etes sur le"+myTab[index]);
+                index = index == 9 ? 0 : index+1;
+                System.out.println("vous etes sur le "+myTab[index]);
                 System.out.println("entrez (g) pour aller a gauche, (d) pour aller à droite et (q) pour quitter:  ");
                 tmp = sc.nextLine();
 
             }else if (tmp.equals("g")) {
-                index = index == 0 ? 9 : index--;
-                System.out.println("vous etes sur le"+myTab[index]);
+                index = index == 0 ? 9 : index-1;
+                System.out.println("vous etes sur le "+myTab[index]);
                 System.out.println("entrez (g) pour aller a gauche, (d) pour aller à droite et (q) pour quitter:  ");
                 tmp = sc.nextLine();
 
+            }else{
+                System.out.println("Entrée incorect! \n Entrez (g) pour aller a gauche, (d) pour aller à droite et (q) pour quitter:  ");
+                tmp = sc.nextLine();
             }
         }
 

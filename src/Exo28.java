@@ -6,16 +6,16 @@ public class Exo28 {
         int [] myTab = new int[] {2, 4, 8, 16, 32, 64,128, 256, 512, 1024 };
         System.out.println("entrez une valeur du tableau afin d'en connaitre la position:  ");
         int valeur = Integer.parseInt(sc.nextLine());
-        boolean tmp = true;
+        boolean isIn = true;
 
         for(int i=0; i<myTab.length; i++){
             if (valeur == myTab[i]){
-                System.out.printf("la valeur %s se trouve à l'index %s", tmp, i);
-                tmp=false;
+                System.out.printf("la valeur %s se trouve à l'index %s", valeur, i);
+                isIn=false;
             }
         }
 
-        if(tmp){
+        if(isIn){
             System.out.println("la valeur ne se trouve pas dans le tableau");
         }
     }

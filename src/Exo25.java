@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Exo25 {
@@ -9,10 +10,11 @@ public class Exo25 {
         for(int i=0; i < myTab.length; i++ ){
             myTab2[i] = myTab[lastIndex - i];
         }
-        for (int elem:myTab) {
-            System.out.println(elem);
-        }        for (int elem:myTab2) {
-            System.out.println(elem);
-        }
+//        for (int elem:myTab) {
+//            System.out.println(elem);
+//        }
+//        for (int elem:myTab2) {
+//            System.out.println(elem);
+//        }
     }
 }
