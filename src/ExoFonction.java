@@ -1,14 +1,17 @@
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
 
 public class ExoFonction {
     public static void main(String[] args) {
 //        String word = "kayak";
 //        System.out.println(isPalindrome(word));
 //        System.out.println(pairNumbers(30,20));
-        System.out.println(fibonnacci(8));
-
+//        System.out.println(fibonnacci(16));
+        String[] poeple = new String[] {"a","b","c","d"};
+        System.out.println(gifts(poeple));
     }
-
     public static String reverseString(String word){
         String tmp = "";
         for (int i = word.length()-1; i >= 0; i--) {
@@ -32,9 +35,6 @@ public class ExoFonction {
         return tmp;
     }
 
-//- Fonction qui renvoie la valeur à l'index envoyé en parametre de la suite de Fibonnacci
-//    0	  1  1	2	3	5	8	13	21	34	55	89	144	233	377	610	987
-
     public static int fibonnacci(int n){
         int result = n;
         if (n>1) {
@@ -50,6 +50,33 @@ public class ExoFonction {
         }
         return result;
     }
-//- Procédure qui prend en paramètre une liste d'invité et qui affiche des couples de donneurs/receveur (par exemple
-//pour des cadeaux de noël)
+
+    public static Map<String, String> gifts(String[] poeple){
+        String[] tmp = randArray(poeple);
+
+        Map<String, String> duo = new HashMap<>();
+        for (int i = 0; i < tmp.length-1; i++) {
+            duo.put(tmp[i], tmp[i+1]);
+        }
+        duo.put(tmp[tmp.length-1],tmp[0]);
+
+        return duo;
+    }
+
+    public static String[] randArray(String[] array){
+        // Creating object for Random class
+        Random rd = new Random();
+
+        // Starting from the last element and swapping one by one.
+        for (int i = array.length-1; i > 0; i--) {
+            // Pick a random index from 0 to i
+            int j = rd.nextInt(i+1);
+
+            // Swap array[i] with the element at random index
+            String  tmp = array[i];
+            array[i] = array[j];
+            array[j] = tmp;
+        }
+        return array;
+    }
 }
