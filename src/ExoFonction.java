@@ -1,7 +1,5 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.lang.reflect.Array;
+import java.util.*;
 
 public class ExoFonction {
     public static void main(String[] args) {
@@ -51,14 +49,15 @@ public class ExoFonction {
         return result;
     }
 
-    public static Map<String, String> gifts(String[] poeple){
-        String[] tmp = randArray(poeple);
-
+    public static Map<String, String> gifts(String[] poeple) {
+//        String[] tmp = randArray(poeple);
+        ArrayList<String> tmp =  new ArrayList<>(Arrays.asList(poeple));
+        Collections.shuffle(tmp);
         Map<String, String> duo = new HashMap<>();
-        for (int i = 0; i < tmp.length-1; i++) {
-            duo.put(tmp[i], tmp[i+1]);
+        for (int i = 0; i < tmp.size()-1; i++) {
+            duo.put(tmp.get(i), tmp.get(i + 1));
         }
-        duo.put(tmp[tmp.length-1],tmp[0]);
+        duo.put(tmp.get(tmp.size() - 1), tmp.get(0));
 
         return duo;
     }
