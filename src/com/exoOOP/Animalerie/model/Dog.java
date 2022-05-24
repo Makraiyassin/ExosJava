@@ -15,10 +15,20 @@ public class Dog  extends Animal{
         this.colorOfNecklace = colorOfNecklace;
         this.race = race;
         this.trained = trained;
+        super.setHumanEquivalent(ageOfDog(age));
     }
 
     public String yell(){
         return "WAF! WAF!";
+    }
+    public int ageOfDog(int age){
+        if(age <= 1){
+            return age * 15;
+        } else if (age == 2) {
+            return 21;
+        } else{
+            return 21 + ((age-2) * 4);
+        }
     }
 
     @Override

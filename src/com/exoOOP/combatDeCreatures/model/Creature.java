@@ -44,29 +44,30 @@ public class Creature {
     }
 
     public void degat(int attaque){
-        if (positionEsquive){
-            if(this.rand.nextInt(100) < 50 ){
-                if(positionDefense){
-                    attaque /= 2;
-                }
-                if (this.armure>0){
-                    int shield = this.armure;
-                    if(shield>attaque) {
-                        shield-= attaque;
-                    }else{
-                        attaque -=shield;
-                        shield = 0;
-                        this.pv -= attaque;
-                    }
-                    setArmure(shield);
-                }
-                if(getPv()==0){
-                    System.out.printf("%s est mort...", this.name);
-                }
-            };
-        }else{
-            System.out.printf("%s a ésquivé l'attaque!", this.name);
+        if (positionEsquive && this.rand.nextInt(100) < 50 ){
+            System.out.printf("%s a ésquivé l'attaque!\n", this.name);
+            attaque = 0;
+        }else if(positionDefense){
+            attaque /= 2;
         }
+
+        if (this.armure>0){
+            int shield = this.armure;
+            if(shield>attaque) {
+                shield-= attaque;
+            }else{
+                attaque -=shield;
+                shield = 0;
+                this.pv -= attaque;
+            }
+            setArmure(shield);
+        }
+        if(getPv()==0){
+            System.out.printf("%s est mort...", this.name);
+        }
+
+
+
     }
 
 //    public void changerDeCreature(){}

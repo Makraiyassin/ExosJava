@@ -44,32 +44,17 @@ public class Animal {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public Sexe getSexe() {
         return sexe;
-    }
-
-    public void setSexe(Sexe sexe) {
-        this.sexe = sexe;
     }
 
     public double getWeight() {
         return weight;
     }
 
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
-
     public int getAge() {
         return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
     public int getHumanEquivalent() {
@@ -90,10 +75,6 @@ public class Animal {
 
     public LocalDate getArrivate() {
         return arrivate;
-    }
-
-    public void setArrivate(LocalDate arrivate) {
-        this.arrivate = arrivate;
     }
 
     public boolean isDeath() {

@@ -12,25 +12,53 @@ public class Master {
         this.creatures = creatures;
     }
 
-    public void action(String action, Creature creatureB){
+    public void action(Creature creatureB){
+        Creature creatureA = this.creatures.get(0);
+        creatureA.attaque(creatureB);
+    }
+    public void action(String action){
+        Creature creatureA = this.creatures.get(0);
         switch (action){
-            case "attaque":
-                this.creatures.get(0).attaque(creatureB);
-                break;
             case "defense":
-                this.creatures.get(0).setPositionDefense(true);
-                this.creatures.get(0).setArmure(creatures.get(0).getArmureTotal());
+                creatureA.setPositionDefense(true);
+                creatureA.setArmure(creatures.get(0).getArmureTotal());
                 break;
             case "esquive":
-                this.creatures.get(0).setPositionEsquive(true);
+                creatureA.setPositionEsquive(true);
                 break;
 
             default:
                 break;
         }
     }
-
     public void reinitialiser(){
-//     position defense / position esquive
+        this.creatures.get(0).setPositionDefense(false);
+        this.creatures.get(0).setPositionEsquive(false);
+    }
+//#region Getters/Setters
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public ArrayList<Creature> getCreatures() {
+        return creatures;
+    }
+
+    public void setCreatures(ArrayList<Creature> creatures) {
+        this.creatures = creatures;
+    }
+//    endregion
+
+
+    @Override
+    public String toString() {
+        return "{" +
+                "name='" + name + '\'' +
+                ", creatures=" + creatures +
+                '}';
     }
 }

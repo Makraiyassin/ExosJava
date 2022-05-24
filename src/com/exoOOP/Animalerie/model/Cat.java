@@ -15,12 +15,20 @@ public class Cat  extends Animal{
         this.temperament = temperament;
         this.cutClaw = cutClaw;
         this.longHair = longHair;
+        super.setHumanEquivalent(ageOfCat(age));
     }
 
     public String yell(){
         return "MIAAAOOOOOOOUUUUUUUUUU";
     }
 
+    public int ageOfCat(int age){
+        if(age<= 2){
+            return age * 12;
+        }else{
+            return 24 + ((age-2) * 4);
+        }
+    }
     @Override
     public String toString() {
         return "\nCat{" +

@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Animalerie petsAndCo = new Animalerie();
-//        Cat chat1 = new Cat("Tom", Sexe.MALE,3,2,"Joueur", false,false);
+//        Cat chat1 = new Cat("Tom", Sexe.MALE,3,10,"Joueur", false,false);
 //        Cat chat2 = new Cat("Garfields", Sexe.MALE,5,4,"Fénéant", true,true);
 //        Dog chien1 = new Dog("Snoopy", Sexe.MALE,5,4, "bleu", "Chiwawa", true);
 //        Bird oiseau1 = new Bird("Titi", Sexe.FEMALE,0.3,3, "jaune", Habitat.CAGE);
