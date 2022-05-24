@@ -1,0 +1,15 @@
+situation 1:
+	Organisation : 
+ 	Trello:
+ 	1) decoupage des tache
+ 	2) separation nice-to-have et must-to-have
+ 	3) ordre de priorité
+ 	4) repartition des tache
+
+situation 2:
+	1) S'informer
+	2) Identifier les points faibles
+	3) Trouver des solutions
+	4) demander conseil/aide
+	5) prendre du recule ou demander l'avis d'une personne exterieur
+ 	6) s'inspirer de processus similaire. 

@@ -3,20 +3,21 @@ package com.exoOOP.combatDeCreatures.model;
 import java.util.Random;
 
 public class Creature {
-    Random rand;
+    private Random rand;
     private String name;
     private int force;
     private int armure;
     private int armureTotal;
-    boolean positionDefense = false;
-    boolean positionEsquive = false;
+    private boolean positionDefense;
+    private boolean positionEsquive;
     private int vitesse;
     private int pv;
 
     public Creature(String name, int force, int armure, int vitesse, int pv) {
         this.rand = new Random();
+        this.positionDefense = false;
+        this.positionEsquive = false;
         this.name = name;
-
         if(force+armure+vitesse+pv>42){
             System.out.println("les statistiques entrées dépassent 42 => les statistiques ont été attribuées par défault...");
             this.force = 10;

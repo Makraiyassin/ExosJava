@@ -14,7 +14,7 @@ public class Main {
         drivers.add(new Driver("Yassin", new Car("Mitsubishi",80,250)));
         drivers.add(new Driver("Max", new Car("Bmw",110,220)));
 
-        Race race = new Race(4, drivers);
+        Race race = new Race(6000,4, drivers);
 
         race.displayWinner();
         System.out.println(race);

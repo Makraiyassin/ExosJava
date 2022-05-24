@@ -4,7 +4,13 @@ import java.util.ArrayList;
 public class Driver {
     private String name;
     private Car car;
-    private ArrayList<Integer> timesList;
+    private ArrayList<Double> timesList;
+
+    public Driver(String name, Car car) {
+        this.name = name;
+        this.car = car;
+        this.timesList= new ArrayList<>();
+    }
 
     public String getName() {
         return name;
@@ -12,21 +18,16 @@ public class Driver {
 
     public int getTotalTime(){
         int tmp = 0;
-        for (int elem : this.timesList) {
+        for (double elem : this.timesList) {
             tmp+= elem;
         }
         return tmp;
     }
 
-    public Driver(String name, Car car) {
-        this.name = name;
-        this.car = car;
-        this.timesList= new ArrayList<>();
-    }
     public int run(){
         return this.car.run();
     }
-    public void makeRound(int time){
+    public void makeRound(double time){
         timesList.add(time);
     }
 
@@ -35,7 +36,7 @@ public class Driver {
         return "\nDriver{" +
                 "Nom : " + name +
                 ", Voiture : " + car.getName() +
-                ", Temps : " + timesList +
+                ", Temps (en secondes) : " + timesList +
                 '}';
     }
 }
