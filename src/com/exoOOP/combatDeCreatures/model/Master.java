@@ -12,18 +12,20 @@ public class Master {
         this.creatures = creatures;
     }
 
-    public void action(Creature creatureB){
-        Creature creatureA = this.creatures.get(0);
-        creatureA.attaque(creatureB);
-    }
-    public void action(String action){
+    public void action(String action, Creature creatureB){
         Creature creatureA = this.creatures.get(0);
         switch (action){
+            case "attaque":
+                System.out.println(creatureA.getName()+" attaque");
+                creatureA.attaque(creatureB);
+                break;
             case "defense":
+                System.out.println(creatureA.getName()+" se defends");
                 creatureA.setPositionDefense(true);
                 creatureA.setArmure(creatures.get(0).getArmureTotal());
                 break;
             case "esquive":
+                System.out.println(creatureA.getName()+" se met en position esquive");
                 creatureA.setPositionEsquive(true);
                 break;
 

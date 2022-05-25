@@ -17,23 +17,52 @@ public class Main {
 //        petsAndCo.addAnimal(chien1);
 //        petsAndCo.addAnimal(oiseau1);
 //        System.out.println(petsAndCo.night());
+//        System.out.println("-----------------------\nnombre de chat: "+petsAndCo.getCountOf("cat"));
 
-        encoding(petsAndCo);
-        System.out.println("-----------------------\nnombre de chat: "+petsAndCo.getCountOf("cat"));
-        night(petsAndCo);
-        System.out.println(petsAndCo);
+        programme(petsAndCo);
     }
 
+    public static void programme(Animalerie animalerie){
+        Scanner sc = new Scanner(System.in);
+        while (true){
+            System.out.println("--------------------------------");
+            System.out.println("Que voulez vous faire?\nEncodez un annimal : 1\nPassez une nuit : 2\nMontrez les annimaux dans l'annimalerie : 3\nNe rien faire : 4\n");
+            String response = sc.nextLine();
+            if(response.equalsIgnoreCase("4")) {
+                System.out.println("Au revoir");
+                break;
+            }
+            switch (response){
+                case "1":
+                    encoding(animalerie);
+                    break;
+                case "2":
+                    night(animalerie);
+                    break;
+                case "3":
+                    System.out.println(animalerie);
+                    break;
+                default:
+                    break;
+            }
+            System.out.println("Voulez-vous quittez le programme (y/n)? ");
+            response = sc.nextLine();
+            if(response.equalsIgnoreCase("y")) {
+                System.out.println("Au revoir");
+                break;
+            }
+        }
+    }
     public static void encoding(Animalerie animalerie){
 
         Scanner sc = new Scanner(System.in);
-        System.out.println("Combien d'annimaux souhaitez vous encoder: ");
-        int numberOfAnimals = Integer.parseInt(sc.nextLine());
-
-        for (int i = 0; i <= numberOfAnimals; i++) {
+//        System.out.println("Combien d'annimaux souhaitez vous encoder: ");
+//        int numberOfAnimals = Integer.parseInt(sc.nextLine());
+//
+//        for (int i = 0; i <= numberOfAnimals; i++) {
             try {
-                System.out.printf("----------\nEncodage de l'animal %s va commencer\n voulez-vous continuer (y/n)? \n--------------\n ", i+1);
-                if(sc.nextLine().toLowerCase().equals("y")) {
+//                System.out.printf("----------\nEncodage de l'animal %s va commencer\n voulez-vous continuer (y/n)? \n--------------\n ", i+1);
+//                if(sc.nextLine().toLowerCase().equals("y")) {
                     System.out.println("Quel animal voulez-vous encoder?\nchat: 1\nchien: 2\noiseau: 3 ");
                     String name;
                     Sexe sexe;
@@ -110,23 +139,22 @@ public class Main {
                         default:
                             break;
                     }
-                }
+//                }
             }
             catch(Exception e) {
                 //  Block of code to handle errors
-                System.out.printf("une erreur est survenu durant l'encodage de l'annimal %s\n ", i+1);
+                System.out.printf("une erreur est survenu durant l'encodage\n ");
             }
-        }
+//        }
     }
-
     public static void night(Animalerie animalerie){
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Combien de nuits sont passée: ");
+//        Scanner sc = new Scanner(System.in);
+//        System.out.println("Combien de nuits sont passée: ");
         try {
-            int numberOfNights = Integer.parseInt(sc.nextLine());
-            for (int i = 0; i < numberOfNights; i++) {
+//            int numberOfNights = Integer.parseInt(sc.nextLine());
+//            for (int i = 0; i < numberOfNights; i++) {
                 System.out.println(animalerie.night());
-            }
+//            }
         }catch (Exception e){
             System.out.println("une erreur est survenue...");
         }

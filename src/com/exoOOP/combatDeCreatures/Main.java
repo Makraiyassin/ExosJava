@@ -1,6 +1,7 @@
 package com.exoOOP.combatDeCreatures;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 import com.exoOOP.combatDeCreatures.model.Creature;
@@ -32,11 +33,12 @@ public class Main {
 
     public static void battle(Master master1, Master master2){
         Scanner sc = new Scanner(System.in);
+        Random rand = new Random();
 
         Creature creature1 = master1.getCreatures().get(0);
         Creature creature2 = master2.getCreatures().get(0);
 
-        while (creature1.getPv()>0 || creature2.getPv()>0){
+        while (!creature1.isDead() || !creature2.isDead()){
             String tmp;
             System.out.println("Joueur 1: quelle action aller vous effectuer?\nAttaquer: 1\nSe defendre: 2\nEsquiver: 3\n");
             tmp = sc.nextLine();
@@ -44,25 +46,52 @@ public class Main {
             System.out.println("joueur 2: quelle action aller vous effectuer?\nAttaquer: 1\nSe defendre: 2\nEsquiver: 3\n");
             tmp = sc.nextLine();
             String actionMaster2 = tmp.equals("3") ? "esquive" : tmp.equals("2") ? "defense" : "attaque";
+
             if(actionMaster1.equals("attaque") && actionMaster2.equals("attaque")){
                 if(creature1.getVitesse()>creature2.getVitesse()){
-                    master1.action(creature2);
-                    master2.action(creature1);
+                    master1.action(actionMaster1,creature2);
+                    if(creature2.isDead()){
+                        break;
+                    }
+                    master2.action(actionMaster2,creature1);
+                }else if(creature1.getVitesse() == creature2.getVitesse()){
+                    if(rand.nextInt(0,100)  < 50) {
+                        master1.action(actionMaster1, creature2);
+                        if(creature2.isDead()){
+                            break;
+                        }
+                        master2.action(actionMaster2, creature1);
+                    }else {
+                        master2.action(actionMaster2, creature1);
+                        if(creature1.isDead()){
+                            break;
+                        }
+                        master1.action(actionMaster1, creature2);
+                    }
                 }else{
-                    master2.action(creature1);
-                    master1.action(creature2);
+                    master2.action(actionMaster2,creature1);
+                    if(creature1.isDead()){
+                        break;
+                    }
+                    master1.action(actionMaster1,creature2);
 
                 }
-            }else{
+            } else{
                 if(actionMaster1.equals("attaque") && !actionMaster2.equals("attaque")){
-                    master2.action(actionMaster2);
-                    master1.action(creature1);
+                    master2.action(actionMaster2,creature1);
+                    if(creature1.isDead()){
+                        break;
+                    }
+                    master1.action(actionMaster1,creature2);
                 }else if(!actionMaster1.equals("attaque") && actionMaster2.equals("attaque")){
-                    master1.action(actionMaster2);
-                    master2.action(creature1);
+                    master1.action(actionMaster1,creature2);
+                    if(creature2.isDead()){
+                        break;
+                    }
+                    master2.action(actionMaster2,creature1);
                 }else{
-                    master1.action(actionMaster1);
-                    master2.action(actionMaster2);
+                    master1.action(actionMaster1,creature2);
+                    master2.action(actionMaster2,creature1);
                 }
             }
             System.out.println(master1);

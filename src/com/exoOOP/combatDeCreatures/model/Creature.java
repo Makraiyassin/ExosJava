@@ -12,12 +12,14 @@ public class Creature {
     private boolean positionEsquive;
     private int vitesse;
     private int pv;
+    private boolean dead;
 
     public Creature(String name, int force, int armure, int vitesse, int pv) {
         this.rand = new Random();
         this.positionDefense = false;
         this.positionEsquive = false;
         this.name = name;
+        this.dead = false;
         if(force+armure+vitesse+pv>42){
             System.out.println("les statistiques entrées dépassent 42 => les statistiques ont été attribuées par défault...");
             this.force = 10;
@@ -58,16 +60,16 @@ public class Creature {
             }else{
                 attaque -=shield;
                 shield = 0;
-                this.pv -= attaque;
+                this.setPv(this.getPv() - attaque);
             }
             setArmure(shield);
+        }else{
+            this.setPv(this.getPv() - attaque);
         }
-        if(getPv()==0){
+        if(getPv() <=0){
             System.out.printf("%s est mort...", this.name);
+            this.setDead(true);
         }
-
-
-
     }
 
 //    public void changerDeCreature(){}
@@ -137,7 +139,14 @@ public class Creature {
         return armureTotal;
     }
 
-    //endregion
+    public boolean isDead() {
+        return dead;
+    }
+
+    public void setDead(boolean dead) {
+        this.dead = dead;
+    }
+//endregion
 
 
     @Override
