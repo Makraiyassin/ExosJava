@@ -38,20 +38,8 @@ public class Master {
         this.creatures.get(0).setPositionEsquive(false);
     }
 //#region Getters/Setters
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public ArrayList<Creature> getCreatures() {
         return creatures;
-    }
-
-    public void setCreatures(ArrayList<Creature> creatures) {
-        this.creatures = creatures;
     }
 //    endregion
 

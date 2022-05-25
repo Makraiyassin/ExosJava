@@ -78,71 +78,30 @@ public class Creature {
     public String getName() {
         return name;
     }
-
-    public int getForce() {
-        return force;
-    }
-
-    public void setForce(int force) {
-        this.force = force;
-    }
-
-    public int getArmure() {
-        return armure;
-    }
-
     public void setArmure(int armure) {
         this.armure = armure;
     }
-
     public int getVitesse() {
         return vitesse;
     }
-
-    public void setVitesse(int vitesse) {
-        this.vitesse = vitesse;
-    }
-
     public int getPv() {
         return pv;
     }
-
     public void setPv(int pv) {
         this.pv = pv;
     }
-
-    public boolean isPositionDefense() {
-        return positionDefense;
-    }
-
     public void setPositionDefense(boolean positionDefense) {
         this.positionDefense = positionDefense;
     }
-
-    public boolean isPositionEsquive() {
-        return positionEsquive;
-    }
-
     public void setPositionEsquive(boolean positionEsquive) {
         this.positionEsquive = positionEsquive;
     }
-
-    public Random getRand() {
-        return rand;
-    }
-
-    public void setRand(Random rand) {
-        this.rand = rand;
-    }
-
     public int getArmureTotal() {
         return armureTotal;
     }
-
     public boolean isDead() {
         return dead;
     }
-
     public void setDead(boolean dead) {
         this.dead = dead;
     }
