@@ -1,0 +1,40 @@
+.twoSide{
+    display: flex;
+    justify-content: space-around;
+}
+
+.leftSide{
+    padding-left: 7%;
+}
+
+.rightSide{
+    justify-content: space-around;
+    display: flex;
+    flex-direction: column;
+    
+    width: 25%;
+
+}
+
+dt{
+    margin-left: 20px;
+    font-style: italic;
+    font-weight: bold;
+    color: #ebbf00;
+    font-size: 15px;
+}
+
+dd{
+    margin: 5px 50px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+ul{
+    margin-left: 45px;
+}
+
+li{
+    margin-bottom: 10px;
+    list-style: circle;
+}

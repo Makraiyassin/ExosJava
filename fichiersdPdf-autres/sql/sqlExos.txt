@@ -1,0 +1,28 @@
+2.7.8:
+SELECT s.last_name, s.first_name, s.section_id
+FROM student s
+WHERE s.year_result IN ( 
+    SELECT MAX(s.year_result) 
+    FROM student s 
+    GROUP BY s.section_id 
+) AND s.section_id NOT IN (
+	SELECT s.section_id
+    FROM student s 
+    GROUP BY s.section_id 
+    HAVING AVG(s.year_result) < 10
+)
+ORDER BY s.section_id DESC;
+
+
+2.7.9:
+SELECT s.section_id, ROUND(AVG(s.year_result)) as average
+FROM student s 
+GROUP BY s.section_id 
+HAVING average = (
+    SELECT MAX(s.average)
+    FROM (
+        SELECT AVG(s.year_result) as average
+        FROM student s
+        GROUP BY s.section_id 
+    ) s
+)
