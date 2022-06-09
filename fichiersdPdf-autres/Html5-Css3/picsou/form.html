@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleResponsive.css">
+    <link rel="stylesheet" href="styleForm.css">
+    <title>Form</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Formulaire de contact</h1>
+        <form action="" method="post">
+            <fieldset>
+                <legend>Mes Coordonnées</legend>
+                <div id="coordonnees">
+                    <div id="nomPrenom">
+                        <input type="text" name="nom" id="nom" placeholder="Nom">
+                        <input type="text" name="prenom" id="prenom" placeholder="Prénom">
+                    </div>
+                    <div id="sexe">
+                        <label>Sexe:</label>
+                        <input type="radio" name="homme" id="homme">
+                        <label for="homme">Homme</label>
+                        <input type="radio" name="femme" id="femme">
+                        <label for="femme">Femme</label>
+                        <input type="radio" name="Autre" id="Autre">
+                        <label for="autre">Autre</label>
+                    </div>
+                    <input type="email" name="email" id="email" placeholder="E-mail">
+                    <div id="mobileFixe">
+                        <input type="tel" name="mobile" id="mobile" placeholder="N° mobile">
+                        <input type="tel" name="fixe" id="fixe" placeholder="N° fixe">
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Vos besoins</legend>
+                <div id="besoins">
+                    <select name="besoin" id="besoin">
+                        <option value="html" selected>HTML-CSS</option>
+                        <option value="">autre</option>
+                    </select>
+                    <textarea name="description" id="description"></textarea>
+                </div>
+            </fieldset>
+            <div id="footer">
+                <div id="envoyerReset">
+                    <input type="submit" id="envoyer" value="Envoyer">
+                    <input type="reset" id="reset" value="Reset">
+                    
+                </div>
+                <div id="retour">
+                    <a href="index.html">Retour au CV</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
