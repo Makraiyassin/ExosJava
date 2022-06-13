@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class testBind {
+
+            // Exemple explicatif du Data Binding
+
+            constructor(){
+                this.a = "hello"
+                // this._fonctionCallBack=this._fonctionCallBack.bind(this)
+            }
+
+            _fonction(fonctionCallBack){
+                console.log(this.a+" tout le monde (2)")
+                fonctionCallBack()
+            }
+
+            _fonctionCallBack = () => {
+                console.log(this.a+" tout le monde (3)")
+            }
+
+        }
+
+        const test = new testBind
+        console.log(test.a+" tout le monde (1)")
+        test._fonction(test._fonctionCallBack)
+    </script>
+</body>
+</html>
