@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        #main{
+            margin-top: 10%;
+            width: 200px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        p{
+            margin: 1% ;
+        }
+        input, option{
+            text-align: center;
+        }
+    </style>
+    <div id="main">
+        <input type="number" id="a"></p>
+        <select name="operator" id="operator">
+            <option value="-">-</option>
+            <option value="+">+</option>
+            <option value="*">x</option>
+            <option value="/">/</option>
+        </select>
+        <input type="number" id="b"></p>
+        <input id="result" type="number" readonly placeholder="0"></input';>
+        <button>resultat</button>
+    </div>
+
+    <script>
+        const a = parseInt(document.querySelector("#a").value);
+        const b = parseInt(document.querySelector("#b").value);
+        const result = document.querySelector("#result");
+        const button = document.querySelector("button");
+        const operator = document.querySelector("#operator");
+
+
+        button.addEventListener("click", ()=>{
+            const a = parseInt(document.querySelector("#a").value);
+            const b = parseInt(document.querySelector("#b").value);
+            switch(operator.value){
+                case "+":
+                    result.value = a+b;
+                    break;
+                case "-":
+                    result.value = a-b;
+                    break;
+                case "*":
+                    result.value = a*b;
+                    break;
+                case "/":
+                    result.value = a/b;
+                    break;
+                default:
+                    break;
+            }
+        })
+    </script>
+</body>
+</html>

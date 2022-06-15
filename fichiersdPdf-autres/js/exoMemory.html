@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <style>
+        #main {
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            width: 40%;
+            align-content: center;
+        }
+
+        .memory {
+            width: 100px;
+            height: 200px;
+            border: 1px solid;
+            border-radius: 5px;
+            margin: 1%;
+            background-color: black;
+        }
+    </style>
+    <div id="main">
+
+    </div>
+
+    <script>
+        
+        const colors = ["red", "green", "blue","pink","grey","purple"]
+        const cartes = [
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/01_of_hearts_A.svg/langfr-800px-01_of_hearts_A.svg.png", 
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/01_of_hearts_A.svg/langfr-800px-01_of_hearts_A.svg.png", 
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/01_of_hearts_A.svg/langfr-800px-01_of_hearts_A.svg.png",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/01_of_hearts_A.svg/langfr-800px-01_of_hearts_A.svg.png",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/01_of_hearts_A.svg/langfr-800px-01_of_hearts_A.svg.png",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/01_of_hearts_A.svg/langfr-800px-01_of_hearts_A.svg.png"
+        ]
+        const mainHTML = document.getElementById("main")
+        const cardsHTML = []
+        let cardReturned = []
+        let blocked = false
+
+        colors.forEach(elem => {
+            let tmp = document.createElement("div")
+            tmp.classList.add("memory")
+            tmp.classList.add(elem)
+            cardsHTML.push(tmp)
+            let tmp2 = document.createElement("div")
+            tmp2.classList.add("memory")
+            tmp2.classList.add(elem)
+            cardsHTML.push(tmp2)
+        })
+
+        shuffle(cardsHTML)
+
+
+        cardsHTML.forEach(card => {
+            mainHTML.appendChild(card)
+            card.addEventListener("click", () => {
+                if(!blocked) {
+                    cardReturned.push(card)
+                    card.style.backgroundColor = card.classList[1]
+                    if (cardReturned.length==2) {
+                        memoryGame()
+                        if (cardsHTML.length == 0) {
+                            mainHTML.innerHTML = "<h1>Vous avez gagné</h1>"
+                        }
+                    }
+                }
+            })
+        })
+
+
+        function shuffle(array) {
+            array.sort(() => Math.random() - 0.5);
+        }
+        function verifyCards() {
+            if (cardReturned[0].classList[1] == cardReturned[1].classList[1]) {
+                console.log("yes");
+                cardsHTML.splice(cardsHTML.indexOf(cardReturned[0]), 1)
+                cardsHTML.splice(cardsHTML.indexOf(cardReturned[1]), 1)
+                cardReturned = []
+            }else{
+                cardReturned = []
+            }
+            blocked = false
+
+        }
+        function memoryGame(){
+            blocked = true
+            setTimeout(()=>{
+                verifyCards()
+                cardsHTML.forEach(card => {
+                    card.style.backgroundColor = "black"
+                })
+                console.log(cardsHTML);
+                
+            }, 1000)
+        }
+    
+    </script>
+</body>
+
+</html>
