@@ -35,79 +35,114 @@
     </div>
 
     <script>
-        
-        const colors = ["red", "green", "blue","pink","grey","purple"]
-        const cartes = [
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/01_of_hearts_A.svg/langfr-800px-01_of_hearts_A.svg.png", 
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/01_of_hearts_A.svg/langfr-800px-01_of_hearts_A.svg.png", 
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/01_of_hearts_A.svg/langfr-800px-01_of_hearts_A.svg.png",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/01_of_hearts_A.svg/langfr-800px-01_of_hearts_A.svg.png",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/01_of_hearts_A.svg/langfr-800px-01_of_hearts_A.svg.png",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/01_of_hearts_A.svg/langfr-800px-01_of_hearts_A.svg.png"
-        ]
+
         const mainHTML = document.getElementById("main")
         const cardsHTML = []
+        const verso = "https://media.istockphoto.com/photos/back-side-of-playing-card-picture-id459234653?k=20&m=459234653&s=612x612&w=0&h=pIndOC1F-mlxy_0SsvDQeXo4Y4kCa3vj7TeuZdV3ylQ="
         let cardReturned = []
         let blocked = false
 
-        colors.forEach(elem => {
-            let tmp = document.createElement("div")
-            tmp.classList.add("memory")
-            tmp.classList.add(elem)
-            cardsHTML.push(tmp)
-            let tmp2 = document.createElement("div")
-            tmp2.classList.add("memory")
-            tmp2.classList.add(elem)
-            cardsHTML.push(tmp2)
-        })
+        const cartes = [
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/01_of_hearts_A.svg/langfr-800px-01_of_hearts_A.svg.png",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/01_of_spades_A.svg/langfr-150px-01_of_spades_A.svg.png",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/01_of_diamonds_A.svg/langfr-150px-01_of_diamonds_A.svg.png",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/01_of_clubs_A.svg/langfr-150px-01_of_clubs_A.svg.png",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/King_of_clubs_fr.svg/langfr-150px-King_of_clubs_fr.svg.png",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/King_of_diamonds_fr.svg/langfr-150px-King_of_diamonds_fr.svg.png",
+            // "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/King_of_spades_fr.svg/langfr-150px-King_of_spades_fr.svg.png",
+            // "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/King_of_hearts_fr.svg/langfr-150px-King_of_hearts_fr.svg.png"
+        ]
 
-        shuffle(cardsHTML)
-
-
-        cardsHTML.forEach(card => {
-            mainHTML.appendChild(card)
-            card.addEventListener("click", () => {
-                if(!blocked) {
-                    cardReturned.push(card)
-                    card.style.backgroundColor = card.classList[1]
-                    if (cardReturned.length==2) {
-                        memoryGame()
-                        if (cardsHTML.length == 0) {
-                            mainHTML.innerHTML = "<h1>Vous avez gagné</h1>"
-                        }
-                    }
-                }
-            })
-        })
-
+        generateHTML()
 
         function shuffle(array) {
             array.sort(() => Math.random() - 0.5);
         }
         function verifyCards() {
-            if (cardReturned[0].classList[1] == cardReturned[1].classList[1]) {
-                console.log("yes");
+            if (cardReturned[0].dataset.image == cardReturned[1].dataset.image) {
                 cardsHTML.splice(cardsHTML.indexOf(cardReturned[0]), 1)
                 cardsHTML.splice(cardsHTML.indexOf(cardReturned[1]), 1)
                 cardReturned = []
-            }else{
+            } else {
                 cardReturned = []
             }
             blocked = false
+            if (cardsHTML.length == 0) {
+                mainHTML.innerHTML = '<h1>Vous avez gagné</h1></br><img src="https://c.tenor.com/e_rxEuhaaZEAAAAj/homer-simpson-simpson.gif">'
+            }
 
         }
-        function memoryGame(){
+        function memoryGame() {
             blocked = true
-            setTimeout(()=>{
+            setTimeout(() => {
                 verifyCards()
                 cardsHTML.forEach(card => {
-                    card.style.backgroundColor = "black"
+                    card.setAttribute("src", verso)
                 })
                 console.log(cardsHTML);
-                
             }, 1000)
         }
-    
+        function generateHTML() {
+
+            cartes.forEach(image => {
+                for (let i = 0; i < 2; i++) {
+                    let tmp = document.createElement("img")
+                    tmp.setAttribute("src", verso)
+                    tmp.setAttribute("style", "width: 170px; margin:1%")
+                    tmp.setAttribute("data-image", image)
+                    cardsHTML.push(tmp)
+                }
+            })
+
+
+            shuffle(cardsHTML)
+            cardsHTML.forEach(card => {
+                mainHTML.appendChild(card)
+                card.addEventListener("click", () => {
+                    if (!blocked) {
+                        cardReturned.push(card)
+                        card.setAttribute("src", card.dataset.image)
+                        if (cardReturned.length == 2) {
+                            memoryGame()
+                        }
+                    }
+                })
+            })
+        }
+
+        // const colors = ["red", "green", "blue","pink","grey","purple"]
+
+        // colors.forEach(elem => {
+        //     let tmp = document.createElement("div")
+        //     tmp.classList.add("memory")
+        //     tmp.classList.add(elem)
+        //     cardsHTML.push(tmp)
+        //     let tmp2 = document.createElement("div")
+        //     tmp2.classList.add("memory")
+        //     tmp2.classList.add(elem)
+        //     cardsHTML.push(tmp2)
+        // })
+        // function verifyCards() {
+        //     if (cardReturned[0].classList[1] == cardReturned[1].classList[1]) {
+        //         console.log("yes");
+        //         cardsHTML.splice(cardsHTML.indexOf(cardReturned[0]), 1)
+        //         cardsHTML.splice(cardsHTML.indexOf(cardReturned[1]), 1)
+        //         cardReturned = []
+        //     } else {
+        //         cardReturned = []
+        //     }
+        //     blocked = false
+        // }
+        // function memoryGame() {
+        //     blocked = true
+        //     setTimeout(() => {
+        //         verifyCards()
+        //         cardsHTML.forEach(card => {
+        //             card.style.backgroundColor = "black"
+        //         })
+        //         console.log(cardsHTML);
+        //     }, 1000)
+        // }
     </script>
 </body>
 
