@@ -1,4 +1,4 @@
 # ExosJava
 
 example
-https://makraiyassin.github.io/ExosJava/fichiersdPdf-autres/Html5-Css3/picsou/
+https://makraiyassin.github.io/ExosJava/fichiersdPdf-autres/js/exoMemory
