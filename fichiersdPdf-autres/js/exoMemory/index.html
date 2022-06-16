@@ -21,13 +21,19 @@
             align-content: center;
         }
 
-        .memory {
-            width: 100px;
-            height: 200px;
-            border: 1px solid;
-            border-radius: 5px;
-            margin: 1%;
-            background-color: black;
+        #main img{
+            width: 170px; 
+            margin:1%;
+        }
+
+        @media screen and (max-width:1021px) {
+            #main{
+                width: 98%;
+            }
+
+            #main img{
+                width: 80px;
+            }
         }
     </style>
     <div id="main">
@@ -70,7 +76,6 @@
             if (cardsHTML.length == 0) {
                 mainHTML.innerHTML = '<h1>Vous avez gagné</h1></br><img src="https://c.tenor.com/e_rxEuhaaZEAAAAj/homer-simpson-simpson.gif">'
             }
-
         }
         function memoryGame() {
             blocked = true
@@ -83,18 +88,14 @@
             }, 1000)
         }
         function generateHTML() {
-
             cartes.forEach(image => {
                 for (let i = 0; i < 2; i++) {
                     let tmp = document.createElement("img")
                     tmp.setAttribute("src", verso)
-                    tmp.setAttribute("style", "width: 170px; margin:1%")
                     tmp.setAttribute("data-image", image)
                     cardsHTML.push(tmp)
                 }
             })
-
-
             shuffle(cardsHTML)
             cardsHTML.forEach(card => {
                 mainHTML.appendChild(card)
@@ -109,40 +110,6 @@
                 })
             })
         }
-
-        // const colors = ["red", "green", "blue","pink","grey","purple"]
-
-        // colors.forEach(elem => {
-        //     let tmp = document.createElement("div")
-        //     tmp.classList.add("memory")
-        //     tmp.classList.add(elem)
-        //     cardsHTML.push(tmp)
-        //     let tmp2 = document.createElement("div")
-        //     tmp2.classList.add("memory")
-        //     tmp2.classList.add(elem)
-        //     cardsHTML.push(tmp2)
-        // })
-        // function verifyCards() {
-        //     if (cardReturned[0].classList[1] == cardReturned[1].classList[1]) {
-        //         console.log("yes");
-        //         cardsHTML.splice(cardsHTML.indexOf(cardReturned[0]), 1)
-        //         cardsHTML.splice(cardsHTML.indexOf(cardReturned[1]), 1)
-        //         cardReturned = []
-        //     } else {
-        //         cardReturned = []
-        //     }
-        //     blocked = false
-        // }
-        // function memoryGame() {
-        //     blocked = true
-        //     setTimeout(() => {
-        //         verifyCards()
-        //         cardsHTML.forEach(card => {
-        //             card.style.backgroundColor = "black"
-        //         })
-        //         console.log(cardsHTML);
-        //     }, 1000)
-        // }
     </script>
 </body>
 
