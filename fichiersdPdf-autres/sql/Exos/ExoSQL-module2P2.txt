@@ -1,0 +1,130 @@
+
+2.1.1
+'F name'
+AS lname
+|| _ || =>  CONCAT(last_name,'_', first_name)
+ CONCAT(last_name,' ', first_name)    /   AS result   /    no ','
+
+2.1.2
+SELECT last_name, birth_date, login, year_result FROM `student`;
+
+2.1.3
+SELECT CONCAT(last_name,' ', first_name) as name, student_id, birth_date FROM `student`;
+----------------------------------------------------------------------------------
+2.2.1
+SELECT login, year_result FROM `student` WHERE year_result > 16 ;
+
+2.2.2
+SELECT last_name, section_id FROM `student` WHERE first_name LIKE 'Georges';
+
+2.2.9
+SELECT last_name, section_id , year_result
+FROM `student` 
+WHERE section_id IN(1010,1020)
+AND year_result NOT BETWEEN 12 AND 18
+ORDER BY section_id;
+
+2.2.10
+SELECT last_name, section_id , year_result * 5 AS  `resultat sur 100`
+FROM `student` 
+WHERE section_id LIKE "13%" AND year_result * 5 <= 60
+ORDER BY year_result;
+
+2.3.12
+SELECT login, DATE_FORMAT(birth_date,'%Y') as birth_year
+FROM student
+where DATE_FORMAT(birth_date,'%Y') > 1970
+
+2.3.13
+SELECT login, last_name
+FROM student
+where CHAR_LENGTH(last_name) >= 8
+
+2.3.14
+SELECT UPPER(last_name) as `Nom de famille`, first_name, year_result 
+FROM student
+where year_result >= 16
+
+2.3.15
+SELECT first_name, last_name, login,  CONCAT(SUBSTRING(LOWER(first_name),1,2),SUBSTRING(LOWER(last_name),1,4)) AS new_login
+FROM student
+WHERE year_result BETWEEN 6 AND 10;
+
+2.3.16(pas encore fini)
+SELECT first_name, last_name, login, LOWER(CONCAT(RIGHT(first_name3),
+   CAST(DATE_FORMAT(GETDATE(),'%Y') AS NUMERIC)    - DATE_FORMAT(birth_date,'%Y')
+)) AS new_login
+FROM student
+WHERE year_result in(10,12,14);
+
+2.4.10
+SELECT section_id, AVG(year_result) AS moyenne
+FROM student
+GROUP BY section_id
+HAVING COUNT(student_id) > 3
+
+2.4.11
+SELECT section_id, AVG(year_result), MAX(year_result)
+FROM student
+GROUP BY section_id
+HAVING AVG(year_result) > 8
+
+2.6.1
+SELECT course.course_name,professor.professor_name, section.section_name
+FROM course 
+JOIN professor ON course.professor_id = professor.professor_id 
+JOIN section ON section.section_id = professor.section_id
+
+2.6.2
+SELECT section.section_id,section.section_name, student.last_name
+FROM section JOIN student ON section.delegate_id = student.student_id 
+ORDER BY section.section_id DESC 
+
+2.6.3
+SELECT section.section_id,section.section_name, professor.professor_name
+FROM section LEFT JOIN professor ON section.section_id = professor.section_id 
+ORDER BY section.section_id DESC
+
+2.6.4
+SELECT section.section_id,section.section_name, professor.professor_name
+FROM section CROSS JOIN professor ON section.section_id = professor.section_id 
+ORDER BY section.section_id DESC
+
+
+2.6.5
+SELECT student.last_name,student.year_result, grade.grade
+FROM student 
+JOIN grade 
+ON student.year_result >= 12	
+AND student.year_result BETWEEN grade.lower_bound AND grade.upper_bound
+ORDER BY grade
+
+2.6.6
+SELECT professor.professor_name,section.section_name, course.course_name, course.course_ects
+FROM professor 
+JOIN section 
+ON professor.section_id = section.section_id
+LEFT JOIN course
+ON course.professor_id = professor.professor_id
+ORDER BY course.course_ects DESC, section.section_name DESC
+
+
+2.6.7
+SELECT professor.professor_id,  SUM(course.course_ects) ECT_TOT
+FROM  professor
+LEFT JOIN course
+ON course.professor_id = professor.professor_id
+GROUP BY professor_id
+ORDER BY ECT_TOT DESC, professor_id DESC;
+
+2.6.8
+SELECT professor.professor_surname AS first_name, professor.professor_name AS last_name, "P" AS category
+FROM professor
+WHERE CHAR_LENGTH(professor.professor_name) > 8 
+UNION
+SELECT student.first_name, student.last_name, "S" AS category
+FROM student
+WHERE CHAR_LENGTH(student.last_name) > 8 ;
+
+
+

@@ -16,7 +16,7 @@ public class Car {
     }
 
     public int run(){
-        return random.nextInt(speedMin, speedMax);
+        return random.nextInt(speedMax+1) + speedMin;
     }
 
 //#region getters and setters

@@ -55,7 +55,7 @@ public class Main {
                     }
                     master2.action(actionMaster2,creature1);
                 }else if(creature1.getVitesse() == creature2.getVitesse()){
-                    if(rand.nextInt(0,100)  < 50) {
+                    if(rand.nextInt(100)  < 50) {
                         master1.action(actionMaster1, creature2);
                         if(creature2.isDead()){
                             break;
