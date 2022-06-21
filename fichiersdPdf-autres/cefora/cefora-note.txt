@@ -1,0 +1,52 @@
+D.E.S.K:
+ 	Décrire les faits
+ 	Exprimer ses Émotions
+ 	Spécifier des Solutions
+ 	Conclure avec les Conséquences
+
+S.M.A.R.T:
+ 	Spécifique 
+ 	Mesurable 
+ 	Atteignable (réaliste) 
+ 	Realiste (pertinent) 
+ 	Temporel (avec délais et dates butoirs)  
+
+S.T.A.R:
+	Situation, c’est-à-dire la description du contexte qui permet de donner une vision globale à votre interlocuteur
+	Tâche, qui désigne la mission et l’objectif à atteindre
+	Action, qui correspond à l’ensemble des actions que vous avez initiées pour réussir à réaliser la tâche
+	Résultat, qui permet de souligner le bilan et les effets de vos actions, notamment par la mention de données chiffrées.  
+
+C.I.N.E:
+	Controle faible
+	Imprésivibilité
+	Nouveauté
+	Ego menacé
+
+POMODORO:
+	1) Préparez vos sessions
+	
+	2) Isolez-vous de toute source de distraction
+	
+	3) Réglez votre minuteur sur 25mn et mettez-vous au travail
+		*Conseil : si une idée ou point à traiter concernant un autre sujet vous vient à l'esprit, 
+		 	   notez-le sur un post-it . Vous ne l'oublierez pas et il ne viendra pas encombrer votre tête !
+	
+	4) Faites une pause de 5mn
+
+	5) Toutes les 4 sessions récupérez pendant 20 à 30mn
+
+Matrice d'eisenhower:
+
+ Quadrant 1 : les tâches importantes et urgentes. (à traiter en priorité)
+ Quadrant 2 : les tâches importantes, mais non urgentes. (à planifier)
+ Quadrant 3 : les tâches non importantes, mais urgentes. (à déléguer)
+ Quadrant 4 : Les tâches non importantes et non urgentes. (à abandonner)
+
+
+A.I.D.A:
+	Attractif
+	Intéret 
+	Désir
+	Action
+

@@ -16,7 +16,7 @@ public class Helpers {
         int result;
 
         for (int i = 0; i < 4; i++) {
-            dice.add(rand.nextInt(1,7));
+            dice.add(rand.nextInt(8)+1);
         }
         for (int i = 0; i < dice.size(); i++) {
             if (Objects.equals(dice.get(i), Collections.min(dice))) {
@@ -29,12 +29,12 @@ public class Helpers {
     }
     public static int diceHit(int strength){
         Random rand = new Random();
-        int dice = rand.nextInt(1,5);
+        int dice = rand.nextInt(6)+1;
         return  dice + getModifier(strength);
     }
     public static int dice(int nbr){
         Random rand = new Random();
-        int dice = rand.nextInt(1,nbr);
+        int dice = rand.nextInt(nbr+1)+1;
         return  dice ;
     }
     public static int sum(ArrayList<Integer> list) {
