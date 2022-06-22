@@ -2,15 +2,18 @@ body{
     height: 100vh;
     margin: 0;
 }
-img{
-    height: 100vh;
-}
+
 #main{
     display: flex;
     flex-wrap: wrap;
     align-content: center;
     justify-content: center; 
-    height: 99vh;
+    height: 100%;
+
+}
+
+img{
+    max-height: 90%;
 }
 
 #chat{
@@ -45,14 +48,14 @@ form{
 }
 
 .customButton {
-    right: 20px;
-    bottom: 20px;
-    box-shadow: none;
-    width: 30%;
-    height: 40px;
-    line-height: 42px;
-    -webkit-perspective: 230px;
-    perspective: 230px;
+    cursor: pointer;
+    background-color: #0000008c;
+    color: white;
+}
+.customButton:hover{
+    background-color: white;
+    color: black;
+
 }
 
 

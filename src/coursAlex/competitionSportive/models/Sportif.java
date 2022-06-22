@@ -2,35 +2,29 @@ package coursAlex.competitionSportive.models;
 
 import java.util.Random;
 
-public class Sportif {
+public abstract class Sportif {
     private String nom;
     private String prenom;
     private String dateNaissance;
-    private int performance;
-
+    private double performance;
     public Sportif (String nom, String prenom, String dateNaissance){
         this.nom = nom;
         this.prenom = prenom;
         this.dateNaissance = dateNaissance;
     }
-
-    public int performer() {
-        Random rand = new Random();
-        return rand.nextInt(100)+1;
-    }
+    public abstract double performer();
     public String getLastName(){
         return this.nom;
     }
     public String getFirstName(){
         return this.prenom;
     }
-    public int getPerformance(){
+    public double getPerformance(){
         return this.performance ;
     }
-    public void setPerformance(int performance){
+    public void setPerformance(double performance){
         this.performance = performance;
     }
-
     @Override
     public String toString() {
         return "\nSportif{" +

@@ -1,6 +1,10 @@
 package coursAlex.competitionSportive;
 
+import coursAlex.competitionSportive.Exceptions.LimiteAtteinteExceptions;
 import coursAlex.competitionSportive.models.Competition;
+import coursAlex.competitionSportive.Exceptions.EtatCompetitionExceptions;
+import coursAlex.competitionSportive.models.Coureur;
+import coursAlex.competitionSportive.models.Judoka;
 import coursAlex.competitionSportive.models.Sportif;
 import java.util.Scanner;
 
@@ -10,16 +14,18 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 //        System.out.println("combien de participants?");
 //        int limiteParticipants = Integer.parseInt(sc.next());
-        int limiteParticipants = 3;
+        int limiteParticipants = 7;
 
-        Competition league = new Competition(limiteParticipants);
+        Competition<Coureur> league = new Competition<Coureur>(limiteParticipants);
         try{
-            Sportif yassin = new Sportif("yassin", "makrai", "21/06/1992");
-            Sportif picsou = new Sportif("picsou", "disney", "01/01/2020");
-            Sportif azert = new Sportif("azert", "qwerty", "01/01/2020");
+            Coureur yassin = new Coureur("Yassin", "Makrai", "21/06/1992");
+            Coureur picsou = new Coureur("Picsou", "Disney", "01/01/2020");
+            Coureur donald = new Coureur("Donald", "Disney", "01/01/2020");
+            Coureur azerty = new Coureur("Azerty", "Qwerty", "01/01/2020");
             league.inscrire(yassin);
             league.inscrire(picsou);
-            league.inscrire(azert);
+            league.inscrire(donald);
+            league.inscrire(azerty);
             league.desinscrire(picsou);
 
             //#region  programme d'encodage en commentaire
@@ -38,10 +44,11 @@ public class Main {
             league.lancer();
             System.out.println("les participans par ordre de leur performances: ");
             System.out.println(league.getSportifs());
-            System.out.println("gagnant: " + league.getWinner()+ " !!!");
-        }
-        catch (Exception e){
-            System.out.println(e);
+            System.out.println("gagnant(s): " + league.getWinner());
+        } catch (EtatCompetitionExceptions | LimiteAtteinteExceptions | IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        } catch (Exception e){
+            System.out.println(e.getMessage());
         }
     }
 }

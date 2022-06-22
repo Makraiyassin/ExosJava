@@ -15,18 +15,19 @@ const options = {
 
 button.addEventListener("click", (e)=>{
     e.preventDefault();
-    let msg = input.value ? input.value : "a";
-    fetch(`https://aeona3.p.rapidapi.com/?text=${msg}`, options)
+    let paragraphes = document.querySelectorAll("#chat p")
+    if(paragraphes.length >=10) paragraphes[0].remove() ;
+    if(input.value){
+        fetch(`https://aeona3.p.rapidapi.com/?text=${msg}`, options)
         .then(response => response.text())
         .then(data => {
-            if(input.value){
                 chat.insertAdjacentHTML("beforeend", `<p class="me">${input.value}</p>`)
                 chat.insertAdjacentHTML("beforeend", `<p class="bot">${data}</p>`)
                 input.value="";
-            }else{
-                chat.insertAdjacentHTML("beforeend", `<p class="bot">write something please....</p>`)
-            }
-        })
-        .catch(err => console.log(err));
+            })
+            .catch(err => console.log(err));
+    }else{
+        chat.insertAdjacentHTML("beforeend", `<p class="bot">write something please....</p>`)
+    }
 
 })
