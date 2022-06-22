@@ -1,0 +1,83 @@
+body{
+    height: 100vh;
+    margin: 0;
+}
+img{
+    height: 100vh;
+}
+#main{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center; 
+    height: 99vh;
+}
+
+#chat{
+    margin-top: 10%;
+    max-width: 15%;
+}
+
+#chat #input{
+    width: 100%;
+}
+
+form{
+    display: flex;
+}
+
+.bot, .me{
+    margin:1%;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+    font-style: italic;
+    font-weight: bold;
+    width: 90%;
+}
+.me{
+    background-color: #cb1d1d85;
+
+}
+.bot{
+    background-color: black;
+}
+
+.customButton {
+    right: 20px;
+    bottom: 20px;
+    box-shadow: none;
+    width: 30%;
+    height: 40px;
+    line-height: 42px;
+    -webkit-perspective: 230px;
+    perspective: 230px;
+}
+
+
+@media screen and (max-width:1000px) {
+    #chat{
+        max-width: 50%;
+    }
+}
+/*
+    #submit{
+        width: 100%;
+    }
+    #input{
+        width: 95%;
+    } 
+    #ecran{
+        top: 27%;
+        left: 45.7%;
+        background-color: #d0e4ed;
+        margin-top: 13.4%;
+        margin-left: 45.2%; 
+        width: 8.5%;
+        min-width: 165px;
+        height: 10%;
+        min-height: 95px;
+    }
+*/
+
