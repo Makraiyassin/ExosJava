@@ -12,8 +12,9 @@ public class Judoka extends Sportif {
         this.puissanceProjection = new Random().nextInt(41)+40;
     }
 
-    public double performer() {
-        return (double) puissanceProjection + (new Random().nextInt(41)-20);
+    public int performer() {
+        double result = (double) puissanceProjection + (new Random().nextInt(41)-20);
+        return (int) result ;
     }
 
 }

@@ -10,9 +10,6 @@ const options = {
 	}
 };
 
-
-
-
 button.addEventListener("click", (e)=>{
     e.preventDefault();
     let msg = input.value;
@@ -30,5 +27,4 @@ button.addEventListener("click", (e)=>{
     }else{
         chat.insertAdjacentHTML("beforeend", `<p class="bot">write something please....</p>`)
     }
-
 })

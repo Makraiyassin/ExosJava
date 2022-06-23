@@ -11,8 +11,9 @@ public class LanceurJavelot extends Sportif {
         this.force = new Random().nextInt(21)+30;
         this.anneeExp = new Random().nextInt(21);
     }
-    public double performer() {
-        int percentage = (new Random().nextInt(21)+70)/100;
-        return (double) this.force + this.anneeExp * percentage;
+    public int performer() {
+        double percentage = (new Random().nextInt(21)+70)/100.0;
+        double result = (double) this.force + this.anneeExp * percentage;
+        return (int) result ;
     }
 }

@@ -1,6 +1,6 @@
 const  chat = document.getElementById("chat");
+const  input = document.getElementById("input");
 const button = document.getElementById("submit");
-const reponse = document.getElementById("reponse");
 
 const options = {
 	method: 'GET',
@@ -12,20 +12,19 @@ const options = {
 
 button.addEventListener("click", (e)=>{
     e.preventDefault();
-    let msg;
-    if(chat.value){
+    let msg = input.value;
+    let paragraphes = document.querySelectorAll("#chat p");
+    if(input.value){
         fetch(`https://ai-chatbot.p.rapidapi.com/chat/free?message=${msg}&uid=user1`, options)
             .then(response => response.json())
             .then(data => {
-                console.log(data);
-                reponse.innerText= data.chatbot.response;
-                
+                chat.insertAdjacentHTML("beforeend", `<p class="me">${input.value}</p>`)
+                chat.insertAdjacentHTML("beforeend", `<p class="bot">${data.chatbot.response ? data.chatbot.response : "une erreur est survenue" }</p>`)
+                input.value="";
             })
             .catch(err => console.error(err));
-
-        chat.value="";
     }else{
-        reponse.innerText= "yo";
+        chat.insertAdjacentHTML("beforeend", `<p class="bot">write something please....</p>`)
     }
 })
 
