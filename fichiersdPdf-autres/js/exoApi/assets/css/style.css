@@ -19,6 +19,8 @@ img{
 #chat{
     margin-top: 10%;
     max-width: 15%;
+    overflow: scroll;
+    padding: 2px;
 }
 
 #chat #input{
@@ -62,6 +64,15 @@ form{
 @media screen and (max-width:1000px) {
     #chat{
         max-width: 50%;
+    }
+
+    #main{
+        flex-wrap: nowrap;
+    }
+
+    img{
+        width: 50%;
+
     }
 }
 /*

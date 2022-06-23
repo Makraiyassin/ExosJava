@@ -16,7 +16,7 @@ const options = {
 button.addEventListener("click", (e)=>{
     e.preventDefault();
     let paragraphes = document.querySelectorAll("#chat p")
-    if(paragraphes.length >=10) paragraphes[0].remove() ;
+    // if(paragraphes.length >=10) paragraphes[0].remove() ;
     if(input.value){
         fetch(`https://aeona3.p.rapidapi.com/?text=${msg}`, options)
         .then(response => response.text())

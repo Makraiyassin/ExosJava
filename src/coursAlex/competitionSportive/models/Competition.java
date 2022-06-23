@@ -58,7 +58,6 @@ public class Competition<S extends Sportif> implements iCompetition<S> {
     public ArrayList<S> getSportifs() {
         return sportifs;
     }
-
     private void SortSportifsDesc(ArrayList <S> sportifsList) {
 
         int n = sportifsList.size();
