@@ -1,5 +1,5 @@
 # ExosJava
 
-https://makraiyassin.github.io/ExosJava/fichiersdPdf-autres/js/exoMemory
+https://makraiyassin.github.io/Formation-Java/fichiersdPdf-autres/js/exoMemory
 
-https://makraiyassin.github.io/ExosJava/fichiersdPdf-autres/js/exoApi
+https://makraiyassin.github.io/Formation-Java/fichiersdPdf-autres/js/exoApi
