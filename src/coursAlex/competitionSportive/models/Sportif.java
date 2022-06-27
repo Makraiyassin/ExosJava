@@ -32,6 +32,9 @@ public abstract class Sportif {
     public void setTotalGain(int totalGain) {
         this.totalGain = totalGain;
     }
+    public String getDateNaissance() {
+        return dateNaissance;
+    }
 
     @Override
     public String toString() {

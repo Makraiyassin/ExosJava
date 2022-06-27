@@ -5,19 +5,25 @@ import coursAlex.competitionSportive.Exceptions.LimiteAtteinteExceptions;
 import coursAlex.competitionSportive.enumerations.Localisation;
 import coursAlex.competitionSportive.interfaces.iCompetition;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Competition<S extends Sportif> implements iCompetition<S> {
+    private final String name;
     private final ArrayList<S> sportifs;
     private Boolean isFinish;
-    private Localisation localisation;
-    public Competition(Localisation localisation){
+    private final Localisation localisation;
+    public Competition(String name, Localisation localisation){
         if(localisation.getNumberParticipant() < 0) throw new IllegalArgumentException("la limite de participants doit etre superieur à 0");
         this.sportifs=new ArrayList<>();
         this.isFinish = false;
         this.localisation = localisation;
+        this.name = name;
     }
     public void lancer() throws Exception {
         if(this.isFinish) throw new Exception("la competetion est terminée");
@@ -78,6 +84,19 @@ public class Competition<S extends Sportif> implements iCompetition<S> {
                     sportifsList.set((j + 1), temp);
                 }
             }
+        }
+    }
+
+    public void sauvegarderInscrits(){
+        String fileName ="src/coursAlex/competitionSportive/ressources/"+this.name+"_"+LocalDate.now()+".csv";
+
+        try (FileWriter fw = new FileWriter(fileName,true)){
+            fw.append("prenom,nom,dateNaissance");
+            for (S sportif : sportifs) {
+                fw.append(String.format("\n%s,%s,%s",sportif.getFirstName(),sportif.getLastName(),sportif.getDateNaissance()));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
