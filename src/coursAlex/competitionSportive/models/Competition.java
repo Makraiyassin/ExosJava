@@ -18,12 +18,14 @@ public class Competition<S extends Sportif> implements iCompetition<S> {
     private final ArrayList<S> sportifs;
     private Boolean isFinish;
     private final Localisation localisation;
-    public Competition(String name, Localisation localisation){
+    private Class<S> clazz;
+    public Competition(String name, Localisation localisation, Class<S> clazz){
         if(localisation.getNumberParticipant() < 0) throw new IllegalArgumentException("la limite de participants doit etre superieur à 0");
         this.sportifs=new ArrayList<>();
         this.isFinish = false;
         this.localisation = localisation;
         this.name = name;
+        this.clazz = clazz;
     }
     public void lancer() throws Exception {
         if(this.isFinish) throw new Exception("la competetion est terminée");
@@ -88,10 +90,11 @@ public class Competition<S extends Sportif> implements iCompetition<S> {
     }
 
     public void sauvegarderInscrits(){
-        String fileName ="src/coursAlex/competitionSportive/ressources/"+this.name+"_"+LocalDate.now()+".csv";
+        String fileName ="src/coursAlex/competitionSportive/ressources/"+this.name+"_"+LocalDate.now()+".txt";
 
         try (FileWriter fw = new FileWriter(fileName,true)){
-            fw.append("prenom,nom,dateNaissance");
+            fw.append(clazz.getSimpleName());
+            fw.append("\nprenom,nom,dateNaissance");
             for (S sportif : sportifs) {
                 fw.append(String.format("\n%s,%s,%s",sportif.getFirstName(),sportif.getLastName(),sportif.getDateNaissance()));
             }
