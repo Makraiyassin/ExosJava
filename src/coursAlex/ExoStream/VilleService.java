@@ -1,10 +1,7 @@
 package coursAlex.ExoStream;
 
-import org.w3c.dom.ls.LSOutput;
-
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.DoubleStream;
 
 public class VilleService {
     private Collection<Ville> villes;
@@ -153,7 +150,8 @@ public class VilleService {
         this.villes
             .stream()
             .filter(v->v.getNom().toLowerCase().charAt(0) == Character.toLowerCase(begin))
-            .forEach(v->v.getHabitants().forEach(h->h.payerTaxe(v.getMontantTaxe())));
+//            .forEach(v->v.getHabitants().forEach(h->h.payerTaxe(v.getMontantTaxe())));
+            .forEach(Ville::taxer);
 
             //region Par nom d'habitant commençant par la lettre
 //        this.villes
