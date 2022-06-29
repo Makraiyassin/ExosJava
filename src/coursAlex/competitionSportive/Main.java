@@ -13,13 +13,15 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Type;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
         try{
 //        Scanner sc = new Scanner(System.in);
-//        Competition<Coureur> league = new Competition<>("league02",Localisation.REGIONAL,Coureur.class);
+        Competition<Coureur> league = new Competition<>("league02",Localisation.REGIONAL,Coureur.class);
 //#region encodage manuel (en commentaire)
 //            Coureur yassin = new Coureur("Yassin", "Makrai", "21/06/1992");
 //            Coureur picsou = new Coureur("Picsou", "Disney", "01/01/2020");
@@ -32,7 +34,7 @@ public class Main {
 //            league.desinscrire(picsou);
 //endregion
 //#region  programme d'encodage (en commentaire)
-//                        for (int i = 0; i < league.getLimiteParticipants(); i++) {
+                        for (int i = 0; i < league.getLimiteParticipants(); i++) {
 //                            System.out.printf("\n nom du sportif %s: ",i+1);
 //                            String lastName = sc.next();
 //                            System.out.printf("\n prénom du sportif %s: ",i+1);
@@ -40,26 +42,26 @@ public class Main {
 //                            System.out.printf("\n date de naissance du sportif %s(xx-xx-xxxx): ",i+1);
 //                            String birthDay = sc.next();
 //                            Coureur sportifTmp = new Coureur(lastName, firstName, birthDay);
-//                            Coureur sportifTmp = new Coureur("Yassin", "Makrai", "01-01-2020");
-//                            league.inscrire(sportifTmp);
-//                        }
+                            Coureur sportifTmp = new Coureur("Makrai", "Yassin", "01-01-2020");
+                            league.inscrire(sportifTmp);
+                        }
 //endregion
 
-            String fileName ="src/coursAlex/competitionSportive/ressources/league02_2022-06-27.txt";
-            createCompetitionWithSaveFile(fileName, Judoka.class);
+//            String fileName ="src/coursAlex/competitionSportive/ressources/league02_2022-06-27.txt";
+//            createCompetitionWithSaveFile(fileName, Judoka.class);
 
+//            league.sauvegarderInscrits();
+            league.lancer();
+            league.getSportifs().stream()
+                    .filter(s -> s.getPerformance()>20)
+                    .map(Sportif::getFirstName)
+                    .forEach(System.out::println);
+//            System.out.println("gagnant(s): " + league.getWinner());
         } catch (EtatCompetitionExceptions | LimiteAtteinteExceptions | IllegalArgumentException e){
             System.out.println(e.getMessage());
         } catch (Exception e){
             System.out.println(e.getMessage());
         }
-
-//        league.sauvegarderInscrits();
-//        league.lancer();
-
-//        System.out.println(league.getSportifs());
-//        System.out.println("gagnant(s): " + league.getWinner());
-
     }
     public static <Type extends Sportif> void createCompetitionWithSaveFile(String fileName, Class<Type> clazz){
         Competition<Type> competition = new Competition<>("league03",Localisation.REGIONAL, clazz);

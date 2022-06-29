@@ -13,7 +13,6 @@ public class Coureur extends Sportif {
     public int performer() {
         double result = (double) vitesseMoyenne / poid * (new Random().nextInt(21)+110);
         return (int) result;
-//        return new Random().nextInt(4);
     }
 }
 
