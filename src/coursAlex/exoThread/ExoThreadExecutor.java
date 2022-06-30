@@ -13,12 +13,12 @@ public class ExoThreadExecutor {
         try {
             System.out.printf(
                     "%s %s %s %s %s %s",
-                    myExecutor(executor).get(),
-                    myExecutor(executor).get(),
-                    myExecutor(executor).get(),
-                    myExecutor(executor).get(),
-                    myExecutor(executor).get(),
-                    myExecutor(executor).get()
+                    myExecutor(executor, 1).get(),
+                    myExecutor(executor, 2).get(),
+                    myExecutor(executor, 3).get(),
+                    myExecutor(executor, 4).get(),
+                    myExecutor(executor, 5).get(),
+                    myExecutor(executor, 6).get()
             );
             executor.shutdown();
         } catch (InterruptedException | ExecutionException e) {
@@ -92,13 +92,14 @@ public class ExoThreadExecutor {
 //        System.out.println(sentence);
 //        endregion
     }
-    static Future<?> myExecutor(ExecutorService executor){
+    static Future<String> myExecutor(ExecutorService executor, int step){
         return executor.submit(() -> {
+            System.out.println(Thread.currentThread().getName() +" - action "+step);
             StringBuilder word = new StringBuilder();
-            for (int j = 0; j < random.nextInt(4)+2 ; j++) {
+            for (int j = 0; j < random.nextInt(5)+2 ; j++) {
                 word.append((char) (random.nextInt(26) + 97));
             }
-            return word;
+            return word.toString();
         });
     }
 }
