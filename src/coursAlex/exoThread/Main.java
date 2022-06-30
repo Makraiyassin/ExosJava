@@ -48,16 +48,14 @@ public class Main {
         thRoue.start();
 
         try {
-
             thCarcasse.join();
             thMoteur.join();
             thRoue.join();
+            Voiture voiture = new Voiture(carcasse, moteur, roues);
+            System.out.println(voiture);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        Voiture voiture = new Voiture(carcasse, moteur, roues);
-        System.out.println(voiture);
 
     }
 
