@@ -10,7 +10,7 @@ public class Tirelire {
     public int getArgent() {
         return argent;
     }
-    public void addArgent(int argent) {
+    public synchronized void addArgent(int argent) {
         this.argent += argent;
     }
 }

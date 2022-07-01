@@ -18,7 +18,7 @@ public class Etrenne extends Thread{
         try {
             while(!this.stop){
                 this.tirelire.addArgent(montant);
-                System.out.println(Thread.currentThread().getName()+" - je rajoute "+this.montant+ " - tirelire: "+ this.tirelire.getArgent());
+                System.out.println(this.getName()+" - je rajoute "+this.montant+ " - tirelire: "+ this.tirelire.getArgent());
                 Thread.sleep(this.secondes * 1000L);
             }
         } catch (InterruptedException e) {
@@ -28,6 +28,6 @@ public class Etrenne extends Thread{
 
     public void stopEtrenne(){
         this.stop = true;
-        System.out.println("etrenne stoppee");
+        System.out.println(this.getName() + " etrenne interrompue");
     }
 }
