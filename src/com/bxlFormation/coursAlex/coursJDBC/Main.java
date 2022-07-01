@@ -1,6 +1,6 @@
 package com.bxlFormation.coursAlex.coursJDBC;
 
-import java.sql.*;
+import com.bxlFormation.coursAlex.coursJDBC.models.SectionDAO;
 
 public class Main {
     public static void main(String[] args) {
@@ -23,9 +23,10 @@ public class Main {
 //            e.printStackTrace();
 //        }
         //    endregion
-        SectionDAO sectionDAO = new SectionDAO();
-        System.out.println(sectionDAO.getAllSections());
+
+        SectionDAO dao = new SectionDAO();
+        System.out.println(dao.getAllSections());
         System.out.println("===================================");
-        System.out.println(sectionDAO.getSectionWithId(1020));
+        System.out.println(dao.getSectionWithId(1320));
     }
 }

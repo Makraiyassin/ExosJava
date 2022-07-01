@@ -1,13 +1,13 @@
-package com.bxlFormation.coursAlex.coursJDBC;
+package com.bxlFormation.coursAlex.coursJDBC.models;
 
 import java.util.HashMap;
 
 public class Section {
-    private int section_id;
-    private String sectionName;
-    private int delegate_id;
+    private final int section_id;
+    private final String sectionName;
+    private final Integer delegate_id;
 
-    public Section(int section_id, String sectionName, int delegate_id) {
+    public Section(int section_id, String sectionName, Integer delegate_id) {
         this.section_id = section_id;
         this.sectionName = sectionName;
         this.delegate_id = delegate_id;
@@ -15,7 +15,7 @@ public class Section {
 
     @Override
     public String toString() {
-        return "Section{" +
+        return "\nSection{" +
                 "section_id=" + section_id +
                 ", sectionName='" + sectionName + '\'' +
                 ", delegate_id=" + delegate_id +
