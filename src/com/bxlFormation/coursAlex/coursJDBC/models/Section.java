@@ -13,6 +13,18 @@ public class Section {
         this.delegate_id = delegate_id;
     }
 
+    public int getSection_id() {
+        return section_id;
+    }
+
+    public String getSectionName() {
+        return sectionName;
+    }
+
+    public Integer getDelegate_id() {
+        return delegate_id;
+    }
+
     @Override
     public String toString() {
         return "\nSection{" +

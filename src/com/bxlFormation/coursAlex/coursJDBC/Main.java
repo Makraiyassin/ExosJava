@@ -1,5 +1,6 @@
 package com.bxlFormation.coursAlex.coursJDBC;
 
+import com.bxlFormation.coursAlex.coursJDBC.models.Section;
 import com.bxlFormation.coursAlex.coursJDBC.models.SectionDAO;
 
 public class Main {
@@ -25,8 +26,21 @@ public class Main {
         //    endregion
 
         SectionDAO dao = new SectionDAO();
-        System.out.println(dao.getAllSections());
-        System.out.println("===================================");
-        System.out.println(dao.getSectionWithId(1320));
-    }
+//        System.out.println(dao.getAllSections());
+//        System.out.println("===================================");
+//        System.out.println(dao.getSectionWithId(1320));
+//        System.out.println("===================================");
+        Section section1 = new Section(2222,"injection1,1010),(5,injection2,1030),(10,nom",123);
+        Section section2 = new Section(1111,"nom",123);
+        Section section3 = new Section(1111,"new name",123);
+        dao.insert(section1);
+        dao.insert(section2);
+        try {
+            Thread.sleep(5000L);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        dao.delete(2222);
+        dao.update(section3);
+  }
 }

@@ -32,4 +32,52 @@ public class SectionDAO {
         }
         return this.sections.stream().toList();
     }
+
+    public void insert(Section section){
+        String query= "INSERT INTO section VALUES (?,?,?)";
+        try(
+            Connection connection = ConnectionFactory.connection();
+            PreparedStatement statement = connection.prepareStatement(query);
+        ){
+            statement.setInt(1,section.getSection_id());
+            statement.setString(2,section.getSectionName());
+            statement.setInt(3,section.getDelegate_id());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void delete(int id){
+        String query= "DELETE FROM section WHERE section_id=" + id;
+        try(
+            Connection connection = ConnectionFactory.connection();
+            Statement statement = connection.createStatement();
+        ){
+            statement.executeUpdate(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void update (Section section){
+        String query= "UPDATE section "+
+                "SET section_name=(?),delegate_id=(?) "+
+                "WHERE section_id=(?)";
+        try(
+            Connection connection = ConnectionFactory.connection();
+            PreparedStatement statement = connection.prepareStatement(query);
+        ){
+            statement.setString(1,section.getSectionName());
+            statement.setInt(2,section.getDelegate_id());
+            statement.setInt(3,section.getSection_id());
+            statement.executeUpdate();
+            System.out.println("yes");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }
