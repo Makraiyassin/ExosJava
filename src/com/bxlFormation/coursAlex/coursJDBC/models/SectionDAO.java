@@ -11,7 +11,7 @@ public class SectionDAO {
         return searchWithQuery(query);
     }
     public Section getSectionWithId(int id){
-        String query = "SELECT * FROM section as s WHERE s.section_id = "+id;
+        String query = "SELECT * FROM section WHERE section_id = "+id;
         this.searchWithQuery(query);
         return this.sections.size() > 0 ? this.sections.get(0) : null;
     }
@@ -34,6 +34,9 @@ public class SectionDAO {
     }
 
     public void insert(Section section){
+        if (section == null)
+            throw new IllegalArgumentException("la section en parametre est null");
+
         String query= "INSERT INTO section VALUES (?,?,?)";
         try(
             Connection connection = ConnectionFactory.connection();
@@ -41,7 +44,10 @@ public class SectionDAO {
         ){
             statement.setInt(1,section.getSection_id());
             statement.setString(2,section.getSectionName());
-            statement.setInt(3,section.getDelegate_id());
+            if(section.getDelegate_id() == null)
+                statement.setNull(3,section.getDelegate_id());
+            else
+                statement.setInt(3,section.getDelegate_id());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -55,25 +61,31 @@ public class SectionDAO {
             Connection connection = ConnectionFactory.connection();
             Statement statement = connection.createStatement();
         ){
-            statement.executeUpdate(query);
+            if(statement.executeUpdate(query) != 1)
+                throw new IllegalArgumentException("cette section n'existe pas dans la DB");
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
     public void update (Section section){
+        if (section == null)
+            throw new IllegalArgumentException("la section en parametre est null");
+
         String query= "UPDATE section "+
-                "SET section_name=(?),delegate_id=(?) "+
-                "WHERE section_id=(?)";
+                "SET section_name=?,delegate_id=? "+
+                "WHERE section_id=?";
         try(
             Connection connection = ConnectionFactory.connection();
             PreparedStatement statement = connection.prepareStatement(query);
         ){
             statement.setString(1,section.getSectionName());
-            statement.setInt(2,section.getDelegate_id());
+            if(section.getDelegate_id() == null)
+                statement.setNull(2,Types.INTEGER);
+            else
+                statement.setInt(2,section.getDelegate_id());
             statement.setInt(3,section.getSection_id());
             statement.executeUpdate();
-            System.out.println("yes");
         } catch (SQLException e) {
             e.printStackTrace();
         }

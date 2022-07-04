@@ -32,15 +32,13 @@ public class Main {
 //        System.out.println("===================================");
         Section section1 = new Section(2222,"injection1,1010),(5,injection2,1030),(10,nom",123);
         Section section2 = new Section(1111,"nom",123);
-        Section section3 = new Section(1111,"new name",123);
+        Section section3 = new Section(1111,"new name",null);
+        Section section4 = new Section(2222,"new name2",null);
+        dao.delete(1111);
+        dao.delete(2222);
         dao.insert(section1);
         dao.insert(section2);
-        try {
-            Thread.sleep(5000L);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        dao.delete(2222);
         dao.update(section3);
-  }
+        dao.update(section4);
+    }
 }
