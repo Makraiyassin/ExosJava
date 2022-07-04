@@ -76,7 +76,6 @@ public class Main {
             for (int i = 2; i < competitionFileTab.length; i++) {
                 String[] participantTabTmp = competitionFileTab[i].split(",");
                 competition.inscrire(clazz.getConstructor(String.class, String.class,String.class).newInstance(participantTabTmp[0],participantTabTmp[1],participantTabTmp[2]));
-//                competition.inscrire(new Type(participantTabTmp[0],participantTabTmp[1],participantTabTmp[2]));
             }
             competition.sauvegarderInscrits();
 

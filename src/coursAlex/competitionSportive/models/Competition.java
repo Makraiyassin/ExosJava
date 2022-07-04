@@ -92,7 +92,7 @@ public class Competition<S extends Sportif> implements iCompetition<S> {
     public void sauvegarderInscrits(){
         String fileName ="src/coursAlex/competitionSportive/ressources/"+this.name+"_"+LocalDate.now()+".txt";
 
-        try (FileWriter fw = new FileWriter(fileName,true)){
+        try (FileWriter fw = new FileWriter(fileName)){
             fw.append(clazz.getSimpleName());
             fw.append("\nprenom,nom,dateNaissance");
             for (S sportif : sportifs) {
