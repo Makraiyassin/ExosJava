@@ -33,24 +33,21 @@ public class Main {
         //    endregion
 
         SectionDAO sectionDAO = new SectionDAO();
+        StudentDAO studentDAO = new StudentDAO();
+
+        //region sectionDao exos (en commentaire)
 //        System.out.println(sectionDAO.getAllSections());
 //        System.out.println("===================================");
 //        System.out.println(sectionDAO.getSectionWithId(1320));
 //        System.out.println("===================================");
-//        Section section1 = new Section(1020,"injection1,1010),(5,injection2,1030),(10,nom",123);
+//        Section section1 = new Section(1111,"injection1,1010),(5,injection2,1030),(10,nom",123);
 //        Section section2 = new Section(1111,"nom",123);
-//        Section section3 = new Section(1111,"new name",null);
-//        Section section4 = new Section(2222,"new name2",null);
 //        sectionDAO.insert(section1);
-//        sectionDAO.insert(section2);
-//        sectionDAO.update(section3);
-//        sectionDAO.update(section4);
+//        sectionDAO.update(section2);
 //        sectionDAO.delete(1111);
-//        sectionDAO.delete(2222);
+        //endregion
 
-//        System.out.println("========================================================");
-
-        StudentDAO studentDAO = new StudentDAO();
+        //region studentDao exos (en commentaire)
 //        System.out.println(studentDAO.getAllStudents());
 //        System.out.println("===================================");
 //        System.out.println(studentDAO.getStudentWithId(26));
@@ -78,6 +75,7 @@ public class Main {
 //        studentDAO.insert(student1);
 //        studentDAO.update(student2);
 //        studentDAO.delete(26);
+        //endregion
 
         studentDAO.transfertFromSectionToSection(sectionDAO.getSectionWithId(1111),sectionDAO.getSectionWithId(1020));
     }
