@@ -38,7 +38,7 @@ public class Main {
 //        System.out.println(sectionDAO.getSectionWithId(1320));
 //        System.out.println("===================================");
 //        Section section1 = new Section(1020,"injection1,1010),(5,injection2,1030),(10,nom",123);
-//        Section section2 = new Section(1111,"nom",123);
+        Section section2 = new Section(1111,"nom",123);
 //        Section section3 = new Section(1111,"new name",null);
 //        Section section4 = new Section(2222,"new name2",null);
 //        sectionDAO.insert(section1);
@@ -48,7 +48,7 @@ public class Main {
 //        sectionDAO.delete(1111);
 //        sectionDAO.delete(2222);
 
-        System.out.println("========================================================");
+//        System.out.println("========================================================");
 
         StudentDAO studentDAO = new StudentDAO();
 //        System.out.println(studentDAO.getAllStudents());
@@ -79,6 +79,6 @@ public class Main {
 //        studentDAO.update(student2);
 //        studentDAO.delete(26);
 
-//        studentDAO.transfertFromSectionToSection(sectionDAO.getSectionWithId(1020),section2);
+        studentDAO.transfertFromSectionToSection(sectionDAO.getSectionWithId(1111),section2);
     }
 }

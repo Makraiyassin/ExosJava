@@ -38,7 +38,7 @@ public class StudentDAO {
                         result.getString("last_name"),
                         result.getDate("birth_date").toLocalDate(),
                         result.getString("login"),
-                        new Section(result.getInt("section_id"),result.getNString("section_name"), result.getInt("delegate_id")),
+                        new Section(result.getInt("section_id"),result.getString("section_name"), result.getInt("delegate_id")),
                         result.getInt("year_result"),
                         result.getString("course_id")
                 ));
@@ -129,9 +129,24 @@ public class StudentDAO {
     public void transfertFromSectionToSection(Section s1, Section s2){
         String query = """
                 SELECT * FROM student
-                WHERE section_id = """+s1.getSection_id();
+                JOIN section on student.section_id = section.section_id
+                WHERE student.section_id = """+s1.getSection_id();
         List<Student> students = searchWithQuery(query);
-        System.out.println(students);
+        SectionDAO sectionDAO = new SectionDAO();
+        students.forEach(s->{
+            this.update(
+                    new Student(
+                            s.getStudent_id(),
+                            s.getFirst_name(),
+                            s.getLast_name(),
+                            s.getBirth_date(),
+                            s.getLogin(),
+                            sectionDAO.getSectionWithId(1020),
+                            s.getYear_result(),
+                            s.getCourse_id()
+                    )
+            );
+        });
     }
 
 }
