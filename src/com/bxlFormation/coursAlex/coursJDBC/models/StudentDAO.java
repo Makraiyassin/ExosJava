@@ -141,7 +141,7 @@ public class StudentDAO {
                             s.getLast_name(),
                             s.getBirth_date(),
                             s.getLogin(),
-                            sectionDAO.getSectionWithId(1020),
+                            s2,
                             s.getYear_result(),
                             s.getCourse_id()
                     )
