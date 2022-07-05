@@ -10,13 +10,14 @@ public class SectionDAO {
         String query = "SELECT * FROM section";
         return searchWithQuery(query);
     }
+
     public Section getSectionWithId(int id){
         String query = "SELECT * FROM section WHERE section_id = "+id;
         this.searchWithQuery(query);
         return this.sections.size() > 0 ? this.sections.get(0) : null;
     }
 
-    public List<Section> searchWithQuery(String query){
+    private List<Section> searchWithQuery(String query){
         this.sections = new ArrayList<>();
         try(
                 Connection connection = ConnectionFactory.connection();
@@ -90,6 +91,5 @@ public class SectionDAO {
             e.printStackTrace();
         }
     }
-
 
 }
