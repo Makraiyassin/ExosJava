@@ -1,7 +1,6 @@
 package com.bxlFormation.coursAlex.coursJDBC.models;
 
 import java.sql.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -130,9 +129,8 @@ public class StudentDAO {
         String query = """
                 SELECT * FROM student
                 JOIN section on student.section_id = section.section_id
-                WHERE student.section_id = """+s1.getSection_id();
+                WHERE student.section_id ="""+s1.getSection_id();
         List<Student> students = searchWithQuery(query);
-        SectionDAO sectionDAO = new SectionDAO();
         students.forEach(s->{
             this.update(
                     new Student(
@@ -148,5 +146,4 @@ public class StudentDAO {
             );
         });
     }
-
 }
