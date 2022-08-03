@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Je test ma nursery api</h1>
+    <div id="main"></div>
+    <script>
+
+        const main = document.getElementById('main');
+        let url = 'http://localhost:8081/enfant/all'
+
+        test_fetch(url)
+        
+        function test_fetch(url){
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    main.innerHTML=""
+                    data.forEach(enfant => {
+                        main.insertAdjacentHTML(
+                            "beforeend", 
+                            `<div>
+                                <h2>${enfant.nom}</h2>
+                                <p>${enfant.prenom}</p>
+                                <button id="${enfant.id}">voir</button>
+                            </div>`
+                        );
+                    });
+                })
+                .then(()=>{
+                    document.querySelectorAll("button").forEach(button => {
+                        button.addEventListener("click", function(){
+                            let id = button.id
+                            let url = `http://localhost:8081/enfant/${id}`
+                            fetch(url)
+                            .then(response => response.json())
+                            .then(data => {
+                                console.log(data);
+                                main.innerHTML=""
+                                main.insertAdjacentHTML(
+                                    "beforeend", 
+                                    `<div>
+                                        <h2>${data.nom}</h2>
+                                        <p>${data.prenom}</p>
+                                        <p>${data.dateNaiss}</p>
+                                        ${data.proprete ? '<p>l\'enfant est propre</p>' : '<p>l\'enfant n\'est pas propre</p>'}
+                                        <p>tuteur: ${data.tuteurs[0].nom}</p>
+                                        <a href="http://127.0.0.1:5500/test-api-nursery.html">retour</a>
+                                    </div>`
+                                );
+                            })
+                        })
+                    })
+                })
+    
+        }
+
+    </script>
+</body>
+
+</html>
